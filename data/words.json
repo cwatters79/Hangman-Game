@@ -1,0 +1,42 @@
+[
+    {
+        "word": "javascript",
+        "hint": "A programming language commonly used to make web pages interactive."
+    },
+    {
+        "word": "browser",
+        "hint": "Software used to view websites."
+    },
+    {
+        "word": "variable",
+        "hint": "A named storage location used in programming."
+    },
+    {
+        "word": "function",
+        "hint": "A reusable block of code that performs a task."
+    },
+    {
+        "word": "keyboard",
+        "hint": "A device used to type letters, numbers, and commands."
+    },
+    {
+        "word": "database",
+        "hint": "An organized collection of stored information."
+    },
+    {
+        "word": "network",
+        "hint": "A group of connected computers or devices."
+    },
+    {
+        "word": "security",
+        "hint": "Protecting systems, data, and users from threats."
+    },
+    {
+        "word": "animation",
+        "hint": "A visual effect that changes over time."
+    },
+    {
+        "word": "interface",
+        "hint": "The part of a program that users interact with."
+    }
+]

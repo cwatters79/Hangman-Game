@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMP2132 Hangman Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/hangman.js" defer></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header class="site-header">
+            <div class="header-content">
+                <p class="eyebrow">COMP2132 Project</p>
+                <h1>Hangman Challenge</h1>
+                <p class="tagline">Guess the hidden word before the drawing is complete.</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="game-card" aria-labelledby="game-title">
+                <div class="game-layout">
+                    <div class="image-panel">
+                        <h2 id="game-title">Current Game</h2>
+                        <img id="hangman-image" src="images/hangman-0.jpg" alt="Hangman graphic with no incorrect guesses">
+                        <p id="guess-count">Incorrect guesses: 0 / 6</p>
+                    </div>
+
+                    <div class="play-panel"> 
+                        <div class="hint-box">
+                            <h3>Hint</h3>
+                            <p id="hint-text">Loading word bank...</p>
+                        </div>
+
+                        <p id="word-display" class="word-display" aria-live="polite"></p>
+
+                        <form id="guess-form" class="guess-form">
+                            <label for="letter-input">Enter one letter</label>
+                            <div class="input-row">
+                                <input id="letter-input" type="text" maxlength="1" autocomplete="off" aria-describedby="message-text">
+                                <button id="guess-button" type="submit">Guess</button>
+                            </div>
+                        </form>
+
+                        <div class="status-box">
+                            <p id="message-text" aria-live="polite">Enter a letter to begin.</p>
+                            <p><strong>Guessed letters:</strong> <span id="guessed-letters">None</span></p>
+                        </div>
+
+                       <div id="letter-buttons" class="letter-buttons" role="group" aria-label="Letter choices"></div>
+
+                        <button id="play-again-button" class="play-again hidden" type="button">Play Again</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Chris Watters Hangman Project</p>
+        </footer>
+    </div>
+</body>
+</html>

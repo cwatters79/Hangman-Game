@@ -1,0 +1,271 @@
+/*********** VARIABLES ***********/
+/*********** MIXINS ***********/
+/*********** GENERAL ***********/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Cambria, Georgia, serif;
+  background: linear-gradient(135deg, #eef4ff, #dfe9f7);
+  color: #172033;
+  line-height: 1.6;
+}
+
+#wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/*********** HEADER ***********/
+.site-header {
+  background: #172033;
+  color: #ffffff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #b9c8ff;
+  font-size: 0.95rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0.35rem 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.tagline {
+  margin: 0;
+  color: #dbe6ff;
+}
+
+/*********** LAYOUT ***********/
+main {
+  flex: 1;
+  width: min(1100px, 94%);
+  margin: 2rem auto;
+}
+
+.game-card {
+  background: #ffffff;
+  border: 1px solid #d7e2f1;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(23, 32, 51, 0.16);
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.image-panel,
+.play-panel {
+  padding: 2rem;
+}
+
+.image-panel {
+  background: #f4f7fc;
+  border-right: 1px solid #d7e2f1;
+  text-align: center;
+}
+.image-panel h2 {
+  margin-top: 0;
+}
+
+#hangman-image {
+  width: min(320px, 100%);
+  min-height: 320px;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #d7e2f1;
+  border-radius: 1rem;
+}
+
+#guess-count {
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+
+
+/*********** GAME CONTENT ***********/
+.hint-box {
+  background: #eaf0ff;
+  border-left: 6px solid #244fc4;
+  border-radius: 0.75rem;
+  padding: 1rem 1.2rem;
+}
+.hint-box h3 {
+  margin-top: 0;
+}
+.hint-box p {
+  margin-bottom: 0;
+}
+
+.word-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 2rem 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+.letter-space {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  min-height: 3rem;
+  border-bottom: 4px solid #172033;
+  text-transform: uppercase;
+}
+
+.guess-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.7rem;
+}
+
+input {
+  width: 5rem;
+  padding: 0.85rem;
+  border: 2px solid #b8c4d8;
+  border-radius: 0.65rem;
+  font: inherit;
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+input:focus {
+  outline: 3px solid #b9c8ff;
+  border-color: #244fc4;
+}
+
+button {
+  border: 0;
+  border-radius: 0.65rem;
+  padding: 0.85rem 1.1rem;
+  background: #244fc4;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+button:hover:not(:disabled), button:focus-visible:not(:disabled) {
+  background: #17358a;
+  transform: translateY(-2px);
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.status-box {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 1px solid #d7e2f1;
+  border-radius: 0.75rem;
+}
+.status-box p {
+  margin: 0.25rem 0;
+}
+
+.letter-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(42px, 1fr));
+  gap: 0.45rem;
+}
+
+.letter-button {
+  padding: 0.65rem 0;
+  background: #172033;
+}
+
+.play-again {
+  width: 100%;
+  margin-top: 1.5rem;
+  background: #126c44;
+}
+
+.hidden {
+  display: none;
+}
+
+.win {
+  color: #126c44;
+  font-weight: 700;
+}
+
+.loss {
+  color: #a51d2d;
+  font-weight: 700;
+}
+
+.fade-in {
+  animation: fadeIn 0.45s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/*********** FOOTER ***********/
+footer {
+  padding: 1rem;
+  text-align: center;
+  color: #475569;
+}
+
+
+/*********** MEDIA QUERIES ***********/
+@media (max-width: 800px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+  .image-panel {
+    border-right: 0;
+    border-bottom: 1px solid #d7e2f1;
+  }
+}
+@media (max-width: 500px) {
+  .image-panel,
+  .play-panel {
+    padding: 1.2rem;
+  }
+  .input-row {
+    flex-direction: column;
+  }
+  input,
+  #guess-button {
+    width: 100%;
+  }
+}

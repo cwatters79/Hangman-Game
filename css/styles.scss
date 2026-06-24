@@ -1,0 +1,331 @@
+
+/*********** VARIABLES ***********/
+$page-bg-start: #eef4ff;
+$page-bg-end: #dfe9f7;
+$surface-color: #ffffff;
+$header-bg: #172033;
+$text-color: #172033;
+$muted-text: #475569;
+$primary-color: #244fc4;
+$primary-dark: #17358a;
+$secondary-color: #b9c8ff;
+$hint-bg: #eaf0ff;
+$panel-bg: #f4f7fc;
+$status-bg: #f8fafc;
+$border-color: #d7e2f1;
+$input-border: #b8c4d8;
+$success-color: #126c44;
+$error-color: #a51d2d;
+$header-text: #ffffff;
+$tagline-color: #dbe6ff;
+$shadow: 0 20px 40px rgba(23, 32, 51, 0.16);
+$main-width: min(1100px, 94%);
+$font-main: Cambria, Georgia, serif;
+$radius-small: 0.65rem;
+$radius-medium: 0.75rem;
+$radius-large: 1rem;
+$radius-card: 1.5rem;
+
+
+
+/*********** MIXINS ***********/
+@mixin center-block($width) {
+    max-width: $width;
+    margin: 0 auto;
+}
+
+@mixin button-base($background-color) {
+    border: 0;
+    border-radius: $radius-small;
+    padding: 0.85rem 1.1rem;
+    background: $background-color;
+    color: $header-text;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+
+
+/*********** GENERAL ***********/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: $font-main;
+    background: linear-gradient(135deg, $page-bg-start, $page-bg-end);
+    color: $text-color;
+    line-height: 1.6;
+}
+
+#wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/*********** HEADER ***********/
+.site-header {
+    background: $header-bg;
+    color: $header-text;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.header-content {
+    @include center-block(900px);
+}
+
+.eyebrow {
+    margin: 0;
+    color: $secondary-color;
+    font-size: 0.95rem;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0.35rem 0;
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.tagline {
+    margin: 0;
+    color: $tagline-color;
+}
+
+
+
+/*********** LAYOUT ***********/
+main {
+    flex: 1;
+    width: $main-width;
+    margin: 2rem auto;
+}
+
+.game-card {
+    background: $surface-color;
+    border: 1px solid $border-color;
+    border-radius: $radius-card;
+    overflow: hidden;
+    box-shadow: $shadow;
+}
+
+.game-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+}
+
+.image-panel,
+.play-panel {
+    padding: 2rem;
+}
+
+.image-panel {
+    background: $panel-bg;
+    border-right: 1px solid $border-color;
+    text-align: center;
+
+    h2 {
+        margin-top: 0;
+    }
+}
+
+#hangman-image {
+    width: min(320px, 100%);
+    min-height: 320px;
+    padding: 1rem;
+    background: $surface-color;
+    border: 1px solid $border-color;
+    border-radius: $radius-large;
+}
+
+#guess-count {
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+
+
+/*********** GAME CONTENT ***********/
+.hint-box {
+    background: $hint-bg;
+    border-left: 6px solid $primary-color;
+    border-radius: $radius-medium;
+    padding: 1rem 1.2rem;
+
+    h3 {
+        margin-top: 0;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.word-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 2rem 0;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+.letter-space {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1rem;
+    min-height: 3rem;
+    border-bottom: 4px solid $text-color;
+    text-transform: uppercase;
+}
+
+.guess-form {
+    label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-weight: 700;
+    }
+}
+
+.input-row {
+    display: flex;
+    gap: 0.7rem;
+}
+
+input {
+    width: 5rem;
+    padding: 0.85rem;
+    border: 2px solid $input-border;
+    border-radius: $radius-small;
+    font: inherit;
+    font-size: 1.2rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    &:focus {
+        outline: 3px solid $secondary-color;
+        border-color: $primary-color;
+    }
+}
+
+button {
+    @include button-base($primary-color);
+
+    &:hover:not(:disabled),
+    &:focus-visible:not(:disabled) {
+        background: $primary-dark;
+        transform: translateY(-2px);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+    }
+}
+
+.status-box {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: $status-bg;
+    border: 1px solid $border-color;
+    border-radius: $radius-medium;
+
+    p {
+        margin: 0.25rem 0;
+    }
+}
+
+.letter-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(42px, 1fr));
+    gap: 0.45rem;
+}
+
+.letter-button {
+    padding: 0.65rem 0;
+    background: $header-bg;
+}
+
+.play-again {
+    width: 100%;
+    margin-top: 1.5rem;
+    background: $success-color;
+}
+
+.hidden {
+    display: none;
+}
+
+.win {
+    color: $success-color;
+    font-weight: 700;
+}
+
+.loss {
+    color: $error-color;
+    font-weight: 700;
+}
+
+.fade-in {
+    animation: fadeIn 0.45s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/*********** FOOTER ***********/
+footer {
+    padding: 1rem;
+    text-align: center;
+    color: $muted-text;
+}
+
+
+
+/*********** MEDIA QUERIES ***********/
+@media (max-width: 800px) {
+    .game-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .image-panel {
+        border-right: 0;
+        border-bottom: 1px solid $border-color;
+    }
+}
+
+@media (max-width: 500px) {
+    .image-panel,
+    .play-panel {
+        padding: 1.2rem;
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+
+    input,
+    #guess-button {
+        width: 100%;
+    }
+}
